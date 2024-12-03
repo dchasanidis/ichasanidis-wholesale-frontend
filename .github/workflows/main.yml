@@ -28,8 +28,7 @@ jobs:
           cd ~/projects/ichasanidis-wholesale
 
           # Step 3.2: Pull the latest changes
-          git reset --hard  # Discard any local changes
-          git pull origin main
+          git reset --hard origin/main
 
           # Step 3.3: Build the React Vite app
           npm ci  # Install dependencies
