@@ -1,0 +1,7 @@
+/* navbar.css */
+.navbar {
+    position: fixed; /* Sticks the navbar at the top */
+    top: 0;          /* Aligns the navbar to the top of the page */
+    width: 100%;     /* Makes the navbar span the entire width */
+    z-index: 1000;   /* Ensures the navbar stays above other content */
+}
