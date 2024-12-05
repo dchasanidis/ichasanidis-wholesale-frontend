@@ -41,5 +41,5 @@ jobs:
           docker rm -f ichasanidis.com || true  # Ignore errors if the container doesn't exist
 
           # Step 3.6: Run the new Docker container
-          docker run -d --name ichasanidis.com --network nginx-proxy-manager_default -p 5173:5173 ichasanidis.com
+          docker run -d --name ichasanidis.com --network nginx-proxy-manager_default -p 4173:4173 ichasanidis.com
         EOF

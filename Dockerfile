@@ -15,10 +15,11 @@ RUN npm install
 COPY . .
 
 # Expose the port Vite uses by default
-EXPOSE 5173
+EXPOSE 4173
 
 # Set the environment variables for Vite
 ENV NODE_ENV=production
 
 # Start the Vite development server
-CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
+CMD ["npm", "run", "build"]
+CMD ["npm", "run", "preview"]
