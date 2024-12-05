@@ -15,7 +15,7 @@ RUN npm install
 COPY . .
 
 # Expose the port Vite uses by default
-EXPOSE 4173
+EXPOSE 5173
 
 # Set the environment variables for Vite
 ENV NODE_ENV=production
