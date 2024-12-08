@@ -20,6 +20,6 @@ EXPOSE 5173
 # Set the environment variables for Vite
 ENV NODE_ENV=production
 
-# Start the Vite development server
+# Run in preview mode
 CMD ["npm", "run", "build"]
 CMD ["npm", "run", "preview"]
