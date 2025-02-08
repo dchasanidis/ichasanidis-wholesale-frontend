@@ -14,16 +14,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Step 2: Install Node.js 20 using nvm
+      # Step 2: Set up Node.js using nvm (Node Version Manager)
       - name: Set up Node.js 20
         run: |
           # Install nvm (Node Version Manager)
           curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
-          # Ensure nvm is available in this session
+          # Source nvm to use it in the current shell
           export NVM_DIR="$HOME/.nvm"
           [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
           [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-          # Now use nvm to install Node.js 20
+          # Install Node.js 20 and set it as the default version
           nvm install 20
           nvm use 20
 
@@ -36,13 +36,13 @@ jobs:
       # Step 4: Deploy to the server
       - name: Deploy to server
         run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} << 'EOF'
-            # Ensure nvm is available on the server too
-            export NVM_DIR="$HOME/.nvm"
-            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-            [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+          # Ensure nvm is available on the server
+          export NVM_DIR="$HOME/.nvm"
+          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+          [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-            # Step 4.1: Navigate to the app directory
+          # Step 4.1: Navigate to the app directory
+          ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} << 'EOF'
             cd ~/projects/ichasanidis-wholesale
 
             # Step 4.2: Pull the latest changes
