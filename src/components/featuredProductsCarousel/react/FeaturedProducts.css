@@ -1,0 +1,25 @@
+/* Ensure full width without extra padding/margins */
+.full-width-carousel {
+  width: 100vw; /* Take full viewport width */
+  position: relative; /* Helps with layout stability */
+  left: 0;
+  right: 0;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  margin: 0 auto;
+}
+
+/* Make images stretch properly while maintaining aspect ratio */
+.carousel-img {
+  width: 100vw; /* Full screen width */
+  height: 100px; /* Controlled height */
+  object-fit: cover; /* Crop images nicely */
+  display: block; /* Remove extra spacing issues */
+}
+
+/* Style for captions (Optional) */
+.carousel-caption h3 {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 10px;
+  border-radius: 5px;
+  display: inline-block;
+}

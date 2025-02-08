@@ -1,23 +1,17 @@
 import './App.css'
+import {RouterProvider} from "react-router-dom";
+import {router} from "./routes.tsx";
 import TopBar from "./components/topBar/react/TopBar.tsx";
-import TopMenu from "./components/topMenu/react/TopMenu.tsx";
-import FeaturedProducts from "./components/featuredProducts/react/FeaturedProducts.tsx";
-import NewArrivals from "./components/newArrivals/react/NewArrivals.tsx";
 import Footer from "./components/footer/react/Footer.tsx";
-import Socials from "./components/socials/react/Socials.tsx";
 
-function App() {
-    return (
-        <>
-            <TopBar/>
-            <TopMenu/>
-            <FeaturedProducts/>
-            <NewArrivals/>
-            <Socials/>
-            <Footer/>
-            <></>
-        </>
-    )
-}
+const App = () => {
+  return <>
+    <div className="app-container">
+      <TopBar/>
+      <RouterProvider router={router}/>
+      <Footer/>
+    </div>
+  </>
+};
 
 export default App
