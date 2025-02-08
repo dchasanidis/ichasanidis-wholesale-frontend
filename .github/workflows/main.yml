@@ -30,16 +30,20 @@ jobs:
           # Step 3.2: Pull the latest changes
           git reset --hard origin/main
 
-          # Step 3.3: Build the React Vite app
-          npm ci  # Install dependencies
-          npm run build  # Build the app
+          # Step 3.3: Clear npm cache and reinstall dependencies
+          rm -rf node_modules package-lock.json  # Remove existing dependencies
+          npm cache clean --force                # Clear npm cache
+          npm install                             # Install fresh dependencies
 
-          # Step 3.4: Build and replace the Docker image
+          # Step 3.4: Build the React Vite app
+          npm run build
+
+          # Step 3.5: Build and replace the Docker image
           docker build -t ichasanidis.com:latest .
 
-          # Step 3.5: Stop and remove the old container
+          # Step 3.6: Stop and remove the old container
           docker rm -f ichasanidis.com || true  # Ignore errors if the container doesn't exist
 
-          # Step 3.6: Run the new Docker container
+          # Step 3.7: Run the new Docker container
           docker run -d --name ichasanidis.com --network nginx-proxy-manager_default -p 5173:5173 ichasanidis.com
         EOF
