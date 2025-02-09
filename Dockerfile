@@ -9,7 +9,7 @@ WORKDIR /app
 # Copy all source files
 COPY . .
 RUN npm install --production
-
+RUN ls -la
 
 # Build the React app
 RUN npm run build
