@@ -1,25 +1,26 @@
-# Use the official Node.js image as the base image
+# Use the latest stable Node.js version with Alpine
 FROM node:20-alpine
 
 LABEL authors="dchasanidis"
-# Set the working directory inside the container
+
+# Set working directory
 WORKDIR /app
 
-# Copy the package.json and package-lock.json (if present)
+# Copy package.json and install dependencies
 COPY package*.json ./
+RUN npm install --production
 
-# Install dependencies
-RUN npm install
-
-# Copy the entire application code to the container
+# Copy all source files
 COPY . .
 
-# Expose the port Vite uses by default
+# Build the React app
+RUN npm run build
+
+# Install a static server to serve the built app
+RUN npm install -g serve
+
+# Expose the port used by Vite's preview mode
 EXPOSE 5173
 
-# Set the environment variables for Vite
-ENV NODE_ENV=production
-
-# Run in preview mode
-CMD ["npm", "run", "build"]
-CMD ["npm", "run", "preview"]
+# Serve the built app
+CMD ["serve", "-s", "dist", "-l", "5173"]
