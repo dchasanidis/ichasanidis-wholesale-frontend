@@ -1,5 +1,5 @@
 # Use the latest stable Node.js version with Alpine
-FROM node:20
+FROM node:22
 
 LABEL authors="dchasanidis"
 
