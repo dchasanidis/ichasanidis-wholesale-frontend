@@ -6,9 +6,12 @@ LABEL authors="dchasanidis"
 # Set working directory
 WORKDIR /app
 
+# Copy package.json and install dependencies
+COPY package*.json ./
+RUN npm install
+
 # Copy all source files
 COPY . .
-RUN npm install
 
 # Build the React app
 RUN npm run build
