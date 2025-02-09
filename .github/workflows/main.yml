@@ -33,7 +33,7 @@ jobs:
             cd ~/projects/ichasanidis-wholesale
 
             # Pull latest changes
-            git reset --hard origin/main
+            git pull
 
             # Build and restart the Docker container
             docker build -t ichasanidis.com:latest .
