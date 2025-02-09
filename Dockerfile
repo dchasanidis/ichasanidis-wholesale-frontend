@@ -13,6 +13,7 @@ RUN npm install --production
 # Copy all source files
 COPY . .
 
+ENV PATH="./node_modules/.bin:$PATH"
 # Build the React app
 RUN npm run build
 
