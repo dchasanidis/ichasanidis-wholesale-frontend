@@ -1,7 +1,7 @@
 import axios from "axios";
 import {Image} from "../models/Image.ts";
 
-const API_URL = "http://localhost:8000/images";
+const API_URL = "/api/images";
 
 export async function uploadImage(file: File): Promise<any> {
   const formData = new FormData();
