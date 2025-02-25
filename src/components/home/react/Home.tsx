@@ -12,7 +12,6 @@ const Home = () => {
     <>
       <FeaturedProducts products={featuredProducts}/>
       <Socials/>
-      <></>
     </>
   )
 };
