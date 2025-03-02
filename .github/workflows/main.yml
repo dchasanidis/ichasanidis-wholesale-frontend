@@ -30,6 +30,7 @@ jobs:
             git pull
 
             # Build and restart the Docker container
+            docker compose down
             docker build -t ioannischasanidisjewelry-frontend:latest .
             docker rm -f ioannischasanidisjewelry-frontend || true
             docker run -d --name ioannischasanidisjewelry-frontend -p 5173:5173 ioannischasanidisjewelry-frontend
