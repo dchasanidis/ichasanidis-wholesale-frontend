@@ -33,5 +33,5 @@ jobs:
             docker compose down
             docker build -t ioannischasanidisjewelry-frontend:latest .
             docker rm -f ioannischasanidisjewelry-frontend || true
-            docker run -d --name ioannischasanidisjewelry-frontend -p 5173:5173 ioannischasanidisjewelry-frontend
+            docker run -d --hostname ioannischasanidisjewelry-frontend --name ioannischasanidisjewelry-frontend -p 5173:5173 ioannischasanidisjewelry-frontend
           EOF
